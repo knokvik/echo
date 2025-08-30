@@ -14,6 +14,7 @@ export default function Page() {
       <div className="flex flex-col items-center justify-center gap-4">
         <Button onClick={()=>addUser()}>ADD</Button>
         {JSON.stringify(users)}
+        <p>Widget Page</p>
       </div>
     </div>
   )
