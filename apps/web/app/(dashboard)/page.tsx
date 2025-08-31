@@ -2,8 +2,8 @@
 
 import { Authenticated, Unauthenticated, useMutation, useQuery } from 'convex/react';
 import { api } from "@workspace/backend/_generated/api";
-import { SignInButton, UserButton } from '@clerk/nextjs';
-import { Button } from "../../../packages/ui/src/components/button"
+import { OrganizationSwitcher, SignInButton, UserButton } from '@clerk/nextjs';
+import { Button } from "../../../../packages/ui/src/components/button"
 
 export default function Page() {
 
@@ -12,21 +12,14 @@ export default function Page() {
 
   return (
     <>
-    <Authenticated>
     <div className="flex items-center justify-center min-h-svh">
       <div className="flex flex-col items-center justify-center gap-4">
         <UserButton/> 
+        <OrganizationSwitcher hidePersonal={true}/>
         <Button onClick={()=>addUser()}>ADD</Button>
-        {JSON.stringify(users)}
         {JSON.stringify(users)}
       </div>
     </div>
-    </Authenticated>
-    <Unauthenticated>
-      <p>Must be signed in!</p>
-      <SignInButton>SignIn!</SignInButton>
-    </Unauthenticated>
-
     </>
   )
 }

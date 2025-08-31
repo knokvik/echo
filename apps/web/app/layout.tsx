@@ -20,12 +20,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
       >
         <ClerkProvider>
-           <Providers>{children}</Providers>
+           <Providers>
+                {children}
+            </Providers>
         </ClerkProvider>
       </body>
     </html>
