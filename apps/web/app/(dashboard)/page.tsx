@@ -13,11 +13,10 @@ export default function Page() {
   return (
     <>
     <div className="flex items-center justify-center min-h-svh">
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4 text-black">
         <UserButton/> 
         <OrganizationSwitcher hidePersonal={true}/>
         <Button onClick={()=>addUser()}>ADD</Button>
-        {JSON.stringify(users)}
       </div>
     </div>
     </>
