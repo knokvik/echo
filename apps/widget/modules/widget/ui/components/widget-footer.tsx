@@ -19,7 +19,7 @@ const WidgetFooter = () => {
             onClick={()=>{}}
             size="icon"
             variant="ghost">
-            <InboxIcon className={cn("size-5", screen === "inbox" && "text-primary")} />
+            <InboxIcon className={cn("size-5")} />
         </Button>
     </footer>
   )
