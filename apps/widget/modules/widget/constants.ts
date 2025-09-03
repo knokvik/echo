@@ -8,4 +8,4 @@ export const WIDGET_SCREENS = [
     "contact"
 ]
 
-export const CONTACT_SESSION_KEY = "echo_constant_key"
+export const CONTACT_SESSION_KEY = "echo_contact_session"
