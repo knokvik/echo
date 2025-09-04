@@ -5,6 +5,21 @@ export default defineSchema({
   users: defineTable({
     name: v.string(),
   }),
+  conversations : defineTable({
+    threadId : v.string(),
+    organizationId : v.string(),
+    contactSessionId : v.string(),
+    status : v.union(
+      v.literal("unresolved"),
+      v.literal("escalated"),
+      v.literal("resolved")
+    )
+  })
+  .index("by_organizaton_id" , ["organizationId"])
+  .index("by_contact_session_id" , ["contactSessionId"])
+  .index("by_thread_id" , ["threadId"])
+  .index("by_status_and_organizaton_id" , ["status" , "organizationId"]),
+
   contactSession: defineTable({
     name: v.string(),
     email: v.string(),

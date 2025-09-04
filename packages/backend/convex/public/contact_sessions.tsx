@@ -11,7 +11,7 @@ export const create = mutation({
     expiresAt: v.number(),
     metadata: v.optional(
       v.object({
-        userAgent: v.string(),
+        userAgent: v.string(), 
         language: v.string(),
         languages: v.optional(v.string()),
         platform: v.string(),

@@ -12,6 +12,8 @@ export const organizationIdAtom = atom<string | null>(null);
 
 export const loadingMessageAtom = atom<string | null>(null);
 
+export const conversationIDAtom = atom<Id<"conversations"> | null>(null);
+
 // Organization scoped contact session atom
 
 export const contactSessionIdAtomFamily = atomFamily((organizationId: string) => 
