@@ -8,6 +8,7 @@ import { WidgetHeader } from "../components/widget.-header";
 import { Button } from "@workspace/ui/components/button";
 import { useAction, useQuery } from "convex/react";
 import { api } from "@workspace/backend/_generated/api";
+import { DicebearAvatar } from "@workspace/ui/components/avatar-echo"
 import { 
        AIConversation , AIConversationContent , AIConversationScrollButton
 } from "@workspace/ui/components/ui/conversation"
@@ -19,6 +20,8 @@ import {
   AIInputToolbar,
   AIInputTools
 } from "@workspace/ui/components/ui/input"
+import { useInfiniteScroll } from "@workspace/ui/hooks/use-infinite-scroll"
+import { InfiniteScrollTrigger } from "../components/infinite-scroll-trigger";
 import {
   AIMessage,
   AIMessageContent,
@@ -50,6 +53,13 @@ export const WidgetChatScreen = () => {
     } : "skip" ,
     { initialNumItems : 10 }
   )
+
+  const{ topElementRef , isLoadingMore , handleLoadMore , canLoadMore } = useInfiniteScroll({
+    status : messages.status,
+    loadMore : messages.loadMore,
+    loadSize : 10,
+  })
+
   const onBack = () => {
     setConversationId(null)
     setScreen("selection")
@@ -91,6 +101,11 @@ export const WidgetChatScreen = () => {
           </WidgetHeader>
           <AIConversation className="flex-1 overflow-y-auto">
             <AIConversationContent>
+              <InfiniteScrollTrigger
+              canLoadMore={canLoadMore}
+              isLoadingMore={isLoadingMore}
+              onLoadMore={handleLoadMore}
+              ref={topElementRef}/>
               {toUIMessages(messages.results ?? [])?.map((message) => {
                 return (
                   <AIMessage 
@@ -100,6 +115,12 @@ export const WidgetChatScreen = () => {
                     <AIMessageContent>
                       <AIResponse>{message.content}</AIResponse>
                     </AIMessageContent>
+                    { message.role === "assistant" && (
+                      <DicebearAvatar
+                         imageUrl="/logo.svg"
+                         seed="assistant"
+                         size={32} />
+                    )}
                     {/* Add avatar component */}
                   </AIMessage>
                 )
