@@ -6,6 +6,6 @@
         "@workspace/backend/*" : ["./*"]
       }
     },
-    "include": ["."],
+    "include": [".", "../ui/src/components/ui"],
     "exclude": ["node_modules"]
   }

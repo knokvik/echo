@@ -66,7 +66,7 @@ export const WidgetLoadingScreen = ({ organizationId } : { organizationId : stri
 
     // Validate sessions if it exists
 
-    const validateContactSessions = useMutation(api.public.contact_sessions.validate)
+    const validateContactSessions = useMutation(api.public.contactSessions.validate)
 
     useEffect(() => {
         if(step != "session") {
